@@ -1,5 +1,10 @@
 # Django Tutorial
 
+* [Install Dependencies](#install-dependencies)
+* [Checkout and configure project](#checkout-and-configure-project)
+* [Run the app](#run-the-app)
+* [Testing](#testing)
+
 ## Install Dependencies
 
 *NB*: Assumes OS X
@@ -55,7 +60,12 @@ if ! which pip > /dev/null; then curl -O https://bootstrap.pypa.io/get-pip.py | 
 pip install -r requirements/dev.txt
 ```
 
-## TODO
+## Run the app
 
-- testing
-- linting / git hooks
+```
+make run
+```
+
+## Testing
+
+TODO
