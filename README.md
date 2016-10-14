@@ -1,11 +1,10 @@
 # Django Tutorial
 
-* [Install Dependencies](#install-dependencies)
 * [Checkout and configure project](#checkout-and-configure-project)
 * [Run the app](#run-the-app)
 * [Testing](#testing)
 
-## Install Dependencies
+## Checkout and configure project
 
 *NB*: Assumes OS X
 
@@ -15,29 +14,26 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-#### Install [direnv](http://direnv.net/)
-
-```
-brew install direnv
-
-# replace .bashrc with your preferred shell config file
-echo 'if which direnv > /dev/null; then eval "$(direnv hook bash)"; fi' >> ~/.bashrc
-source ~/.bashrc
-```
-
-#### Install Python version manager
-
-```
-brew install pyenv
-```
-
-## Checkout and configure project
-
 #### Checkout the app
 
 ```
 git clone git@github.com:mdzhang/djangotutorial.git
 cd django-hello-world
+```
+
+#### Install Brew Formulae
+
+```
+brew tap Homebrew/bundle
+brew bundle
+```
+
+#### Configure shell
+
+```
+# replace .bashrc with your preferred shell config file
+echo 'if which direnv > /dev/null; then eval "$(direnv hook bash)"; fi' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 #### Setup development environment variables
@@ -53,11 +49,20 @@ direnv allow
 # install python
 pyenv install $(cat ./.python-version)
 
-# install pip
-if ! which pip > /dev/null; then curl -O https://bootstrap.pypa.io/get-pip.py | sudo python; fi
-
 # install packages
 pip install -r requirements/dev.txt
+```
+
+#### Setup the database
+
+```
+./docker/db/setup.sh
+```
+
+#### Create admin user
+
+```
+docker-compose exec web /bin/bash -c "python manage.py createsuperuser"
 ```
 
 ## Run the app

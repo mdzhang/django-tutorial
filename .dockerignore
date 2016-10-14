@@ -1,0 +1,6 @@
+.git
+__pycache__
+.envrc
+.envrc.sample
+.gitignore
+README.md
