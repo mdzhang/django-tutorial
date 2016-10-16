@@ -97,7 +97,9 @@ make open
 
 ## Testing
 
-TODO
+```
+make test
+```
 
 ## Deploying
 

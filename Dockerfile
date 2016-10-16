@@ -12,7 +12,11 @@ RUN tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.1.0.tar.gz
 
 RUN mkdir /code
 WORKDIR /code
-ADD . /code/
+
+# Docker cache packages so that this line is only re-run
+# when contents of ./requirements change
+ADD ./requirements /code/requirements
 RUN pip install -r requirements/dev.txt
 
+ADD . /code/
 CMD python manage.py runserver 0.0.0.0:8000

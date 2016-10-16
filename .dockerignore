@@ -1,6 +1,11 @@
 .git
+.githooks
 __pycache__
+.editorconfig
 .envrc
 .envrc.sample
 .gitignore
+Brewfile
+docker-compose.yml
+Makefile
 README.md

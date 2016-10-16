@@ -1,16 +1,21 @@
-.PHONY: build console install lint open psql run stop
+APP_LIST ?= apps.polls
+
+.PHONY: bash build console install lint open psql run stop test
+
+bash:
+	docker-compose run web /bin/bash
 
 build:
 	docker-compose build
 
 console:
-	docker-compose exec web /bin/bash -c "python manage.py shell"
+	docker-compose run web python manage.py shell
 
 install:
 	pip install -r requirements/dev.txt
 
 lint:
-	docker run djangotutorial_web flake8
+	flake8 .
 
 open:
 	open http://$$(docker-machine ip):8000
@@ -23,3 +28,6 @@ run:
 
 stop:
 	docker-compose down
+
+test:
+	docker-compose exec web /bin/bash -c "python manage.py test $(APP_LIST)"

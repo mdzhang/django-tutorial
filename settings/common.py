@@ -79,8 +79,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'djangotutorial',
         'USER': 'djangotutorial',
-        'HOST': os.environ['DB_HOST'],
-        'PASSWORD': os.environ['DB_PASSWORD']
+        'HOST': os.environ.get('DB_HOST', 'db'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
     }
 }
 
