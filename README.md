@@ -1,10 +1,16 @@
 # Django Tutorial
 
-* [Checkout and configure project](#checkout-and-configure-project)
-* [Run the app](#run-the-app)
-* [Testing](#testing)
+Django Tutorial example that incorporates Docker and other best practices
 
-## Checkout and configure project
+## Table of Contents
+
+* [Installation](#installation)
+* [Running](#running)
+* [Testing](#testing)
+* [Deploying](#deploying)
+* [Resources](#resources)
+
+## Installation
 
 *NB*: Assumes OS X
 
@@ -21,7 +27,7 @@ git clone git@github.com:mdzhang/djangotutorial.git
 cd django-hello-world
 ```
 
-#### Install Brew Formulae
+#### Install Homebrew packages
 
 ```
 brew tap Homebrew/bundle
@@ -43,23 +49,25 @@ cp .envrc.sample .envrc
 direnv allow
 ```
 
-#### Install Python and project packages
+#### Install Python
 
 ```
-# install python
 pyenv install $(cat ./.python-version)
+```
 
-# install packages
+#### Install Python packages
+
+```
 pip install -r requirements/dev.txt
 ```
 
-#### Install git hooks
+#### Install [Git-hooks](https://github.com/git-hooks/git-hooks)
 
 ```
 git hooks --install
 ```
 
-Caveat: Cannot use `docker-compose` commands inside hooks. [Issue]( https://github.com/docker/compose/issues/3491)
+*NB*: Cannot use `docker-compose` commands inside hooks. [Issue](https://github.com/docker/compose/issues/3491)
 
 #### Setup the database
 
@@ -73,12 +81,32 @@ Caveat: Cannot use `docker-compose` commands inside hooks. [Issue]( https://gith
 docker-compose exec web /bin/bash -c "python manage.py createsuperuser"
 ```
 
-## Run the app
+## Running
+
+#### Start the server
 
 ```
 make run
 ```
 
+#### View in browser
+
+```
+make open
+```
+
 ## Testing
 
 TODO
+
+## Deploying
+
+TODO
+
+## Resources
+
+- [Django Tutorial](https://docs.djangoproject.com/en/1.10/intro/)
+- Open source Django apps [[1]](https://github.com/django/djangoproject.com) [[2]](https://github.com/samuelclay/NewsBlur)
+- If you use [Atom](https://atom.io/) as your editor, recommend using packages:
+  - [atom-beautify](https://atom.io/packages/atom-beautify)
+  - [linter-flake8](https://atom.io/packages/linter-flake8)

@@ -1,10 +1,13 @@
-.PHONY: build console open psql run stop
+.PHONY: build console install lint open psql run stop
 
 build:
 	docker-compose build
 
 console:
 	docker-compose exec web /bin/bash -c "python manage.py shell"
+
+install:
+	pip install -r requirements/dev.txt
 
 lint:
 	docker run djangotutorial_web flake8
