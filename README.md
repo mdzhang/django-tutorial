@@ -69,16 +69,10 @@ git hooks --install
 
 *NB*: Cannot use `docker-compose` commands inside hooks. [Issue](https://github.com/docker/compose/issues/3491)
 
-#### Setup the database
+#### Complete app setup
 
 ```
-./docker/db/setup.sh
-```
-
-#### Create admin user
-
-```
-docker-compose exec web /bin/bash -c "python manage.py createsuperuser"
+make setup
 ```
 
 ## Running

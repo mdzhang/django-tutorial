@@ -10,7 +10,7 @@ services:
   web:
     container_name: djangotutorial_web
     build: .
-    command: dockerize -wait tcp://db:5432 ./docker/web/setup.sh
+    command: dockerize -wait tcp://db:5432 ./scripts/web/start.sh
     volumes:
       - .:/code
     ports:

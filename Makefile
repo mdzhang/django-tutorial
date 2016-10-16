@@ -1,6 +1,6 @@
 APP_LIST ?= apps.polls
 
-.PHONY: bash build console install lint open psql run stop test
+.PHONY: bash build console install lint open psql run setup setup_db setup_web stop test
 
 bash:
 	docker-compose run web /bin/bash
@@ -25,6 +25,14 @@ psql:
 
 run:
 	docker-compose up
+
+setup: run setup_db setup_web
+
+setup_db:
+	docker-compose run db ./scripts/db/setup.sh
+
+setup_web:
+	docker-compose run web ./scripts/web/setup.sh
 
 stop:
 	docker-compose down
