@@ -53,6 +53,14 @@ pyenv install $(cat ./.python-version)
 pip install -r requirements/dev.txt
 ```
 
+#### Install git hooks
+
+```
+git hooks --install
+```
+
+Caveat: Cannot use `docker-compose` commands inside hooks. [Issue]( https://github.com/docker/compose/issues/3491)
+
 #### Setup the database
 
 ```

@@ -6,6 +6,9 @@ build:
 console:
 	docker-compose exec web /bin/bash -c "python manage.py shell"
 
+lint:
+	docker run djangotutorial_web flake8
+
 open:
 	open http://$$(docker-machine ip):8000
 

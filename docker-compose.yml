@@ -1,12 +1,14 @@
 version: '2'
 services:
   db:
+    container_name: djangotutorial_db
     image: postgres:9.6.0
     ports:
       - "5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
   web:
+    container_name: djangotutorial_web
     build: .
     command: dockerize -wait tcp://db:5432 ./docker/web/setup.sh
     volumes:
